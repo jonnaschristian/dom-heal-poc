@@ -1,0 +1,5 @@
+{
+  "tituloCabecalho": ".site-heading h1",
+  "subtituloCabecalho": ".site-heading .subheading",
+  "cardsPost": ".post-preview"
+}
