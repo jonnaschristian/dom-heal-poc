@@ -1,0 +1,11 @@
+{
+  "menu": "nav a[href=\"contact.html\"]",
+  "tituloContato": "h1",
+  "inputNome": "#name",
+  "inputEmail": "#email",
+  "inputPhone": "#phone",
+  "inputMsg": "#message",
+  "btnEnviar": "#submitButton",
+  "mensagemSucesso": "#submitSuccessMessage",
+  "mensagemErroEmail": "#contactForm > div:nth-child(2) > div:nth-child(4)"
+}

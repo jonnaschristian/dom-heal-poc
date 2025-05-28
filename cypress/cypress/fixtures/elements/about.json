@@ -1,0 +1,6 @@
+{
+  "menu": "nav a[href=\"about.html\"]",
+  "titulo": ".page-heading",
+  "subtitulo": ".subheading",
+  "texto": ".col-xl-7 p"
+}
