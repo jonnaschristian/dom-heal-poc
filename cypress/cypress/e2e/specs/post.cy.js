@@ -8,20 +8,20 @@ describe('Menu Post', () => {
   });
 
   it('Deve exibir corretamente o título, autor e data do post individual', () => {
-    cy.get(post.menu).click();
+    cy.xpath(post.menu).click();
 
-    cy.get(post.titulo)
+    cy.xpath(post.titulo)
       .should('be.visible')
       .and('have.text', 'Man must explore, and this is exploration at its greatest');
-    cy.get(post.autor)
+    cy.xpath(post.autor)
       .should('be.visible')
       .and('contain', 'Start Bootstrap');
-    cy.get(post.meta)
+    cy.xpath(post.meta)
       .should('contain', 'August 24, 2023');
   });
 
   it('Deve exibir o conteúdo principal do post', () => {
-    cy.get(post.menu).click();
-    cy.get(post.conteudo).should('be.visible').and('not.be.empty');
+    cy.xpath(post.menu).click();
+    cy.xpath(post.conteudo).should('be.visible').and('not.be.empty');
   });
 });

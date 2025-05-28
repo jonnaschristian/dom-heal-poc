@@ -1,7 +1,7 @@
 {
-  "menu": "nav a[href=\"post.html\"]",
-  "titulo": "div > h1",
-  "autor": "span > a",
-  "meta": ".meta",
-  "conteudo": ".col-xl-7 p"
+  "menu": "//nav//a[@href='post.html']",
+  "titulo": "//div[contains(@class, 'post-heading')]//h1",
+  "autor": "//span[contains(@class, 'meta')]//a",
+  "meta": "//span[contains(@class, 'meta')]",
+  "conteudo": "//div[contains(@class, 'bloco-texto')]/p"
 }

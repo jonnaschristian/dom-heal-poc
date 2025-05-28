@@ -11,7 +11,7 @@ describe('Menu Contato', () => {
 
   it('Enviar mensagem com todos os campos válidos com sucesso', () => {
     const nome = faker.person.fullName();
-    const email = faker.internet.email();
+    const email = 'teste@gmail.com';
     const telefone = faker.phone.number('(##) #####-####');
     const mensagem = faker.lorem.sentence();
 
@@ -20,8 +20,8 @@ describe('Menu Contato', () => {
 
     cy.get(contact.inputNome).type(nome);
     cy.get(contact.inputEmail).type(email);
-    cy.get(contact.inputPhone).type(telefone);
-    cy.get(contact.inputMsg).type(mensagem);
+    cy.get(contact.inputTelefone).type(telefone);
+    cy.get(contact.inputMensagem).type(mensagem);
     cy.get(contact.btnEnviar).click();
 
     cy.get(contact.mensagemSucesso).should('be.visible').and('contain', 'Form submission successful!');
@@ -44,9 +44,9 @@ describe('Menu Contato', () => {
 
     cy.get(contact.inputNome).type(nome);
     cy.get(contact.inputEmail).type('emailinvalido');
-    cy.get(contact.inputPhone).type(telefone);
-    cy.get(contact.inputMsg).type(mensagem);
+    cy.get(contact.inputTelefone).type(telefone);
+    cy.get(contact.inputMensagem).type(mensagem);
 
-    cy.get(contact.mensagemErroEmail).should('be.visible').and('contain', 'Email is not valid.');
+    cy.get(contact.mensagemErro).should('be.visible').and('contain', 'Email is not valid.');
   });
 });

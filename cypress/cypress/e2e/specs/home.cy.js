@@ -18,6 +18,6 @@ describe('Menu Home', () => {
   it('Deve permitir acessar um post individual a partir de um card na Home', () => {
     cy.get(home.cardsPost).should('exist').and('have.length.greaterThan', 0);
     cy.get(home.cardsPost).first().find('a').first().click();
-    cy.get(post.titulo).should('be.visible').and('not.be.empty');
+    cy.xpath(post.titulo).should('be.visible').and('not.be.empty');
   });
 });

@@ -6,7 +6,7 @@ describe('Menu About', () => {
       about = dados;
     });
   });
-
+  
   it('Deve exibir corretamente o título e texto principal da página About', () => {
     cy.get(about.menu).click();
 
