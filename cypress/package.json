@@ -12,6 +12,7 @@
   "type": "commonjs",
   "devDependencies": {
     "@faker-js/faker": "^9.8.0",
-    "cypress": "^14.4.0"
+    "cypress": "^14.4.0",
+    "cypress-xpath": "^2.0.1"
   }
 }

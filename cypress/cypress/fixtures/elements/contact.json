@@ -1,11 +1,11 @@
 {
-  "menu": "nav a[href=\"contact.html\"]",
-  "tituloContato": "h1",
-  "inputNome": "#name",
-  "inputEmail": "#email",
-  "inputPhone": "#phone",
-  "inputMsg": "#message",
+  "menu": ".menu-contato",
+  "tituloContato": "#tituloContato",
+  "inputNome": "#campoNome",
+  "inputEmail": "#campoEmail",
+  "inputTelefone": "#campoTelefone",
+  "inputMensagem": "#campoMensagem",
   "btnEnviar": "#submitButton",
-  "mensagemSucesso": "#submitSuccessMessage",
-  "mensagemErroEmail": "#contactForm > div:nth-child(2) > div:nth-child(4)"
+  "mensagemSucesso": "#mensagemSucesso",
+  "mensagemErro": "#mensagemErro"
 }
