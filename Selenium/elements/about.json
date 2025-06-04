@@ -1,0 +1,6 @@
+{
+  "menu": ".menu-sobre",
+  "titulo": "[name='tituloSobre']",
+  "subtitulo": "[name='subtituloSobre']",
+  "texto": "[name='blocoTexto']"
+}
