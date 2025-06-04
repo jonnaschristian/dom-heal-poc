@@ -1,0 +1,956 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.13.0 on win32)" generated="2025-06-04T19:35:03.071270" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\Jonnas\Documents\dom-heal-poc\RobotFramework\tests">
+<suite id="s1-s1" name="About" source="C:\Users\Jonnas\Documents\dom-heal-poc\RobotFramework\tests\about.robot">
+<kw name="Carregar Seletores" type="SETUP">
+<kw name="Load Json From File" owner="JSONLibrary">
+<msg time="2025-06-04T19:35:03.667809" level="INFO">${json} = {'menu': '.menu-sobre', 'titulo': "[name='tituloSobre']", 'subtitulo': "[name='subtituloSobre']", 'texto': "[name='blocoTexto']"}</msg>
+<var>${json}</var>
+<arg>../elements/about.json</arg>
+<doc>Load JSON from file.</doc>
+<status status="PASS" start="2025-06-04T19:35:03.667175" elapsed="0.000682"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-06-04T19:35:03.668295" level="INFO">${SELECTORS} = {'menu': '.menu-sobre', 'titulo': "[name='tituloSobre']", 'subtitulo': "[name='subtituloSobre']", 'texto': "[name='blocoTexto']"}</msg>
+<arg>${SELECTORS}</arg>
+<arg>${json}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-06-04T19:35:03.668059" elapsed="0.000287"/>
+</kw>
+<doc>Carrega o arquivo JSON com os seletores da página.</doc>
+<status status="PASS" start="2025-06-04T19:35:03.666342" elapsed="0.002094"/>
+</kw>
+<test id="s1-s1-t1" name="Validar Título e Textos da Página About" line="41">
+<kw name="Abrir Navegador e Acessar Menu" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-04T19:35:03.670198" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x0000028D91E0EE40&gt;</msg>
+<var>${service}</var>
+<arg>sys.modules['selenium.webdriver.chrome.service'].Service(executable_path="${CHROMEDRIVER}")</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-04T19:35:03.669324" elapsed="0.000918"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-04T19:35:03.670721" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000028D91E0EA50&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-04T19:35:03.670420" elapsed="0.000332"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:03.671154" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg time="2025-06-04T19:35:04.896651" level="INFO">${driver} = 1</msg>
+<var>${driver}</var>
+<arg>Chrome</arg>
+<arg>options=${options}</arg>
+<arg>service=${service}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-06-04T19:35:03.670915" elapsed="1.225782"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:04.897425" level="INFO">Opening url 'http://localhost:8000'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-06-04T19:35:04.896919" elapsed="0.674427"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-06-04T19:35:05.571709" elapsed="0.053568"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:05.627295" level="INFO">Clicking element 'css=.menu-sobre'.</msg>
+<arg>css=${SELECTORS['menu']}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:05.625672" elapsed="0.169062"/>
+</kw>
+<doc>Abre o navegador e clica no menu About.</doc>
+<status status="PASS" start="2025-06-04T19:35:03.669095" elapsed="2.125848"/>
+</kw>
+<kw name="Validar Conteúdo da Página About">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=${SELECTORS['titulo']}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:05.796121" elapsed="0.042110"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:05.839024" level="INFO">Verifying element 'css=[name='tituloSobre']' contains exact text 'About Me'.</msg>
+<arg>css=${SELECTORS['titulo']}</arg>
+<arg>About Me</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2025-06-04T19:35:05.838441" elapsed="0.022718"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:05.861892" level="INFO">Verifying element 'css=[name='subtituloSobre']' contains exact text 'This is what I do.'.</msg>
+<arg>css=${SELECTORS['subtitulo']}</arg>
+<arg>This is what I do.</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2025-06-04T19:35:05.861366" elapsed="0.020326"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:05.900363" level="INFO">Element 'css=[name='blocoTexto']' is displayed.</msg>
+<arg>css=${SELECTORS['texto']}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:05.881888" elapsed="0.018590"/>
+</kw>
+<doc>Valida título, subtítulo e se o texto está visível na About.</doc>
+<status status="PASS" start="2025-06-04T19:35:05.795551" elapsed="0.105046"/>
+</kw>
+<kw name="Fechar Navegador" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-06-04T19:35:05.901533" elapsed="2.255800"/>
+</kw>
+<doc>Fecha o navegador.</doc>
+<status status="PASS" start="2025-06-04T19:35:05.901136" elapsed="2.256352"/>
+</kw>
+<doc>Testa se o About mostra o título, subtítulo e texto esperados.</doc>
+<status status="PASS" start="2025-06-04T19:35:03.668521" elapsed="4.489243"/>
+</test>
+<status status="PASS" start="2025-06-04T19:35:03.124019" elapsed="5.034674"/>
+</suite>
+<suite id="s1-s2" name="Contact" source="C:\Users\Jonnas\Documents\dom-heal-poc\RobotFramework\tests\contact.robot">
+<kw name="Carregar Seletores" type="SETUP">
+<kw name="Load Json From File" owner="JSONLibrary">
+<msg time="2025-06-04T19:35:08.170543" level="INFO">${json} = {'menu': '.menu-contato', 'tituloContato': '#tituloContato', 'inputNome': '#campoNome', 'inputEmail': '#campoEmail', 'inputTelefone': '#campoTelefone', 'inputMensagem': '#campoMensagem', 'btnEnviar': ...</msg>
+<var>${json}</var>
+<arg>../elements/contact.json</arg>
+<doc>Load JSON from file.</doc>
+<status status="PASS" start="2025-06-04T19:35:08.169540" elapsed="0.001046"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-06-04T19:35:08.170973" level="INFO">${SELECTORS} = {'menu': '.menu-contato', 'tituloContato': '#tituloContato', 'inputNome': '#campoNome', 'inputEmail': '#campoEmail', 'inputTelefone': '#campoTelefone', 'inputMensagem': '#campoMensagem', 'btnEnviar': ...</msg>
+<arg>${SELECTORS}</arg>
+<arg>${json}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-06-04T19:35:08.170766" elapsed="0.000249"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:08.169297" elapsed="0.001790"/>
+</kw>
+<test id="s1-s2-t1" name="Enviar mensagem com todos os campos válidos com sucesso" line="48">
+<kw name="Abrir Navegador e Acessar Menu Contato" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-04T19:35:08.172738" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x0000028D9185A490&gt;</msg>
+<var>${service}</var>
+<arg>sys.modules['selenium.webdriver.chrome.service'].Service(executable_path="${CHROMEDRIVER}")</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-04T19:35:08.171861" elapsed="0.000947"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-04T19:35:08.173642" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000028D91859590&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-04T19:35:08.173277" elapsed="0.000404"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:08.174074" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg time="2025-06-04T19:35:09.446034" level="INFO">${driver} = 2</msg>
+<var>${driver}</var>
+<arg>Chrome</arg>
+<arg>options=${options}</arg>
+<arg>service=${service}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-06-04T19:35:08.173848" elapsed="1.272236"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:09.446444" level="INFO">Opening url 'http://localhost:8000'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-06-04T19:35:09.446283" elapsed="0.755989"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-06-04T19:35:10.202555" elapsed="0.070401"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:10.274361" level="INFO">Clicking element 'css=.menu-contato'.</msg>
+<arg>css=${SELECTORS['menu']}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:10.273359" elapsed="0.246588"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:08.171653" elapsed="2.348781"/>
+</kw>
+<kw name="Validar Título Página Contato">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=${SELECTORS['tituloContato']}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:10.523141" elapsed="0.059335"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:10.583239" level="INFO">Verifying element 'css=#tituloContato' contains exact text 'Contact Me'.</msg>
+<arg>css=${SELECTORS['tituloContato']}</arg>
+<arg>Contact Me</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2025-06-04T19:35:10.582705" elapsed="0.025197"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:10.522194" elapsed="0.085831"/>
+</kw>
+<kw name="Generate Random String" owner="String">
+<msg time="2025-06-04T19:35:10.608654" level="INFO">${nome} = KjliSiRkLj</msg>
+<var>${nome}</var>
+<arg>10</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-06-04T19:35:10.608309" elapsed="0.000406"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-04T19:35:10.609163" level="INFO">${email} = teste@gmail.com</msg>
+<var>${email}</var>
+<arg>teste@gmail.com</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-04T19:35:10.608996" elapsed="0.000195"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-04T19:35:10.609630" level="INFO">${telefone} = (85) 99999-9999</msg>
+<var>${telefone}</var>
+<arg>(85) 99999-9999</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-04T19:35:10.609461" elapsed="0.000200"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-04T19:35:10.610081" level="INFO">${mensagem} = Mensagem automática gerada por teste Robot</msg>
+<var>${mensagem}</var>
+<arg>Mensagem automática gerada por teste Robot</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-04T19:35:10.609907" elapsed="0.000208"/>
+</kw>
+<kw name="Preencher Formulário Contato">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:10.611486" level="INFO">Typing text 'KjliSiRkLj' into text field 'css=#campoNome'.</msg>
+<arg>css=${SELECTORS['inputNome']}</arg>
+<arg>${nome}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:10.610854" elapsed="0.156656"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:10.769104" level="INFO">Typing text 'teste@gmail.com' into text field 'css=#campoEmail'.</msg>
+<arg>css=${SELECTORS['inputEmail']}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:10.767992" elapsed="0.131855"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:10.901500" level="INFO">Typing text '(85) 99999-9999' into text field 'css=#campoTelefone'.</msg>
+<arg>css=${SELECTORS['inputTelefone']}</arg>
+<arg>${telefone}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:10.900286" elapsed="0.144735"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:11.045962" level="INFO">Typing text 'Mensagem automática gerada por teste Robot' into text field 'css=#campoMensagem'.</msg>
+<arg>css=${SELECTORS['inputMensagem']}</arg>
+<arg>${mensagem}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:11.045271" elapsed="0.221836"/>
+</kw>
+<arg>${nome}</arg>
+<arg>${email}</arg>
+<arg>${telefone}</arg>
+<arg>${mensagem}</arg>
+<status status="PASS" start="2025-06-04T19:35:10.610420" elapsed="0.656816"/>
+</kw>
+<kw name="Clicar Botão Enviar">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=${SELECTORS['btnEnviar']}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:11.267977" elapsed="0.024443"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
+<arg>css=${SELECTORS['btnEnviar']}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" start="2025-06-04T19:35:11.292627" elapsed="0.025001"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:11.318559" level="INFO">Executing JavaScript:
+document.querySelector('#submitButton').click()
+Without any arguments.</msg>
+<arg>document.querySelector('${SELECTORS["btnEnviar"]}').click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-06-04T19:35:11.317861" elapsed="0.023675"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:11.267601" elapsed="0.074066"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=${SELECTORS['mensagemSucesso']}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:11.342044" elapsed="0.023169"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:11.380395" level="INFO">Element 'css=#mensagemSucesso' is displayed.</msg>
+<arg>css=${SELECTORS['mensagemSucesso']}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:11.365657" elapsed="0.014870"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:11.398117" level="INFO">Element 'css=#mensagemSucesso' contains text 'Form submission successful!'.</msg>
+<arg>css=${SELECTORS['mensagemSucesso']}</arg>
+<arg>Form submission successful!</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2025-06-04T19:35:11.380928" elapsed="0.017287"/>
+</kw>
+<kw name="Fechar Navegador" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-06-04T19:35:11.399195" elapsed="2.224080"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:11.398850" elapsed="2.224580"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:08.171167" elapsed="5.452509"/>
+</test>
+<test id="s1-s2-t2" name="Enviar mensagem sem preencher campos deve dar erro (botão desabilitado)" line="62">
+<kw name="Abrir Navegador e Acessar Menu Contato" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-04T19:35:13.626128" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x0000028D918591D0&gt;</msg>
+<var>${service}</var>
+<arg>sys.modules['selenium.webdriver.chrome.service'].Service(executable_path="${CHROMEDRIVER}")</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-04T19:35:13.625302" elapsed="0.000871"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-04T19:35:13.626639" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000028D91F1A850&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-04T19:35:13.626348" elapsed="0.000328"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:13.627103" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg time="2025-06-04T19:35:14.817689" level="INFO">${driver} = 3</msg>
+<var>${driver}</var>
+<arg>Chrome</arg>
+<arg>options=${options}</arg>
+<arg>service=${service}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-06-04T19:35:13.626831" elapsed="1.190901"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:14.818095" level="INFO">Opening url 'http://localhost:8000'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-06-04T19:35:14.817916" elapsed="0.051590"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-06-04T19:35:14.870234" elapsed="0.688966"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:15.560734" level="INFO">Clicking element 'css=.menu-contato'.</msg>
+<arg>css=${SELECTORS['menu']}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:15.559529" elapsed="0.199153"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:13.624982" elapsed="2.133837"/>
+</kw>
+<kw name="Validar Título Página Contato">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=${SELECTORS['tituloContato']}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:15.759543" elapsed="0.030360"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:15.790987" level="INFO">Verifying element 'css=#tituloContato' contains exact text 'Contact Me'.</msg>
+<arg>css=${SELECTORS['tituloContato']}</arg>
+<arg>Contact Me</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2025-06-04T19:35:15.790182" elapsed="0.029404"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:15.759209" elapsed="0.060538"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:15.842949" level="INFO">${class} = btn btn-primary text-uppercase disabled</msg>
+<var>${class}</var>
+<arg>css=${SELECTORS['btnEnviar']}</arg>
+<arg>class</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:15.820084" elapsed="0.022910"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${class}</arg>
+<arg>disabled</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-06-04T19:35:15.843328" elapsed="0.000216"/>
+</kw>
+<kw name="Fechar Navegador" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-06-04T19:35:15.844171" elapsed="2.246462"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:15.843907" elapsed="2.246913"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:13.624354" elapsed="4.466757"/>
+</test>
+<test id="s1-s2-t3" name="Não deve permitir envio se e-mail for inválido" line="70">
+<kw name="Abrir Navegador e Acessar Menu Contato" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-04T19:35:18.094055" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x0000028D91F128B0&gt;</msg>
+<var>${service}</var>
+<arg>sys.modules['selenium.webdriver.chrome.service'].Service(executable_path="${CHROMEDRIVER}")</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-04T19:35:18.093044" elapsed="0.001069"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-04T19:35:18.094675" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000028D91F12650&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-04T19:35:18.094336" elapsed="0.000388"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:18.095272" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg time="2025-06-04T19:35:19.357638" level="INFO">${driver} = 4</msg>
+<var>${driver}</var>
+<arg>Chrome</arg>
+<arg>options=${options}</arg>
+<arg>service=${service}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-06-04T19:35:18.094942" elapsed="1.262757"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:19.358204" level="INFO">Opening url 'http://localhost:8000'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-06-04T19:35:19.357957" elapsed="0.051051"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-06-04T19:35:19.409308" elapsed="0.683585"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:20.093783" level="INFO">Clicking element 'css=.menu-contato'.</msg>
+<arg>css=${SELECTORS['menu']}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:20.093104" elapsed="0.185127"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:18.092649" elapsed="2.185799"/>
+</kw>
+<kw name="Validar Título Página Contato">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=${SELECTORS['tituloContato']}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:20.279471" elapsed="0.043944"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:20.324260" level="INFO">Verifying element 'css=#tituloContato' contains exact text 'Contact Me'.</msg>
+<arg>css=${SELECTORS['tituloContato']}</arg>
+<arg>Contact Me</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2025-06-04T19:35:20.323630" elapsed="0.027081"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:20.279012" elapsed="0.071825"/>
+</kw>
+<kw name="Generate Random String" owner="String">
+<msg time="2025-06-04T19:35:20.351563" level="INFO">${nome} = YFfC5OJeCV</msg>
+<var>${nome}</var>
+<arg>10</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-06-04T19:35:20.351241" elapsed="0.000359"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-04T19:35:20.352105" level="INFO">${telefone} = (85) 88888-8888</msg>
+<var>${telefone}</var>
+<arg>(85) 88888-8888</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-04T19:35:20.351917" elapsed="0.000246"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-06-04T19:35:20.352881" level="INFO">${mensagem} = Teste de envio com email inválido</msg>
+<var>${mensagem}</var>
+<arg>Teste de envio com email inválido</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-06-04T19:35:20.352575" elapsed="0.000354"/>
+</kw>
+<kw name="Preencher Formulário Contato">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:20.354565" level="INFO">Typing text 'YFfC5OJeCV' into text field 'css=#campoNome'.</msg>
+<arg>css=${SELECTORS['inputNome']}</arg>
+<arg>${nome}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:20.353847" elapsed="0.197152"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:20.552591" level="INFO">Typing text 'emailinvalido' into text field 'css=#campoEmail'.</msg>
+<arg>css=${SELECTORS['inputEmail']}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:20.551405" elapsed="0.222298"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:20.774953" level="INFO">Typing text '(85) 88888-8888' into text field 'css=#campoTelefone'.</msg>
+<arg>css=${SELECTORS['inputTelefone']}</arg>
+<arg>${telefone}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:20.773997" elapsed="0.147908"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:20.922841" level="INFO">Typing text 'Teste de envio com email inválido' into text field 'css=#campoMensagem'.</msg>
+<arg>css=${SELECTORS['inputMensagem']}</arg>
+<arg>${mensagem}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:20.922140" elapsed="0.226969"/>
+</kw>
+<arg>${nome}</arg>
+<arg>emailinvalido</arg>
+<arg>${telefone}</arg>
+<arg>${mensagem}</arg>
+<status status="PASS" start="2025-06-04T19:35:20.353330" elapsed="0.795910"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=${SELECTORS['mensagemErro']}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:21.149576" elapsed="0.032119"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:21.204955" level="INFO">Element 'css=#mensagemErro' is displayed.</msg>
+<arg>css=${SELECTORS['mensagemErro']}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:21.182152" elapsed="0.022930"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:21.224770" level="INFO">Element 'css=#mensagemErro' contains text 'Email is not valid.'.</msg>
+<arg>css=${SELECTORS['mensagemErro']}</arg>
+<arg>Email is not valid.</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2025-06-04T19:35:21.205600" elapsed="0.019353"/>
+</kw>
+<kw name="Fechar Navegador" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-06-04T19:35:21.226108" elapsed="2.234257"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:21.225780" elapsed="2.234738"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:18.091892" elapsed="5.368885"/>
+</test>
+<status status="PASS" start="2025-06-04T19:35:08.159514" elapsed="15.302055"/>
+</suite>
+<suite id="s1-s3" name="Home" source="C:\Users\Jonnas\Documents\dom-heal-poc\RobotFramework\tests\home.robot">
+<kw name="Carregar Seletores Home e Post" type="SETUP">
+<kw name="Load Json From File" owner="JSONLibrary">
+<msg time="2025-06-04T19:35:23.469033" level="INFO">${json_home} = {'tituloCabecalho': '.site-heading h1', 'subtituloCabecalho': '.site-heading .subheading', 'cardsPost': '.post-preview'}</msg>
+<var>${json_home}</var>
+<arg>../elements/home.json</arg>
+<doc>Load JSON from file.</doc>
+<status status="PASS" start="2025-06-04T19:35:23.468446" elapsed="0.000627"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-06-04T19:35:23.469443" level="INFO">${HOME_SELECTORS} = {'tituloCabecalho': '.site-heading h1', 'subtituloCabecalho': '.site-heading .subheading', 'cardsPost': '.post-preview'}</msg>
+<arg>${HOME_SELECTORS}</arg>
+<arg>${json_home}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-06-04T19:35:23.469246" elapsed="0.000238"/>
+</kw>
+<kw name="Load Json From File" owner="JSONLibrary">
+<msg time="2025-06-04T19:35:23.470052" level="INFO">${json_post} = {'menu': "//nav//a[@href='post.html']", 'titulo': "//div[contains(@class, 'post-heading')]//h1", 'autor': "//span[contains(@class, 'meta')]//a", 'meta': "//span[contains(@class, 'meta')]", 'conteudo':...</msg>
+<var>${json_post}</var>
+<arg>../elements/post.json</arg>
+<doc>Load JSON from file.</doc>
+<status status="PASS" start="2025-06-04T19:35:23.469582" elapsed="0.000502"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-06-04T19:35:23.470642" level="INFO">${POST_SELECTORS} = {'menu': "//nav//a[@href='post.html']", 'titulo': "//div[contains(@class, 'post-heading')]//h1", 'autor': "//span[contains(@class, 'meta')]//a", 'meta': "//span[contains(@class, 'meta')]", 'conteudo':...</msg>
+<arg>${POST_SELECTORS}</arg>
+<arg>${json_post}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-06-04T19:35:23.470341" elapsed="0.000367"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:23.467724" elapsed="0.003095"/>
+</kw>
+<test id="s1-s3-t1" name="Deve exibir corretamente o título e subtítulo do blog" line="35">
+<kw name="Abrir Navegador e Acessar Home" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-04T19:35:23.472682" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x0000028D91F12650&gt;</msg>
+<var>${service}</var>
+<arg>sys.modules['selenium.webdriver.chrome.service'].Service(executable_path="${CHROMEDRIVER}")</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-04T19:35:23.471829" elapsed="0.000900"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-04T19:35:23.473209" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000028D91F12B10&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-04T19:35:23.472906" elapsed="0.000342"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:23.473720" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg time="2025-06-04T19:35:24.735261" level="INFO">${driver} = 5</msg>
+<var>${driver}</var>
+<arg>Chrome</arg>
+<arg>options=${options}</arg>
+<arg>service=${service}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-06-04T19:35:23.473453" elapsed="1.261882"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:24.736318" level="INFO">Opening url 'http://localhost:8000'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-06-04T19:35:24.735915" elapsed="0.730818"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-06-04T19:35:25.467068" elapsed="0.071705"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:23.471541" elapsed="2.067459"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=${HOME_SELECTORS['tituloCabecalho']}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:25.539672" elapsed="0.050981"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:25.609185" level="INFO">Element 'css=.site-heading h1' is displayed.</msg>
+<arg>css=${HOME_SELECTORS['tituloCabecalho']}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:25.591032" elapsed="0.018273"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:25.610350" level="INFO">Verifying element 'css=.site-heading h1' contains exact text 'Clean Blog'.</msg>
+<arg>css=${HOME_SELECTORS['tituloCabecalho']}</arg>
+<arg>Clean Blog</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2025-06-04T19:35:25.609645" elapsed="0.025721"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:25.657717" level="INFO">Element 'css=.site-heading .subheading' is displayed.</msg>
+<arg>css=${HOME_SELECTORS['subtituloCabecalho']}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:25.635732" elapsed="0.022123"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:25.659088" level="INFO">Verifying element 'css=.site-heading .subheading' contains exact text 'A Blog Theme by Start Bootstrap'.</msg>
+<arg>css=${HOME_SELECTORS['subtituloCabecalho']}</arg>
+<arg>A Blog Theme by Start Bootstrap</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2025-06-04T19:35:25.658261" elapsed="0.024323"/>
+</kw>
+<kw name="Fechar Navegador" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-06-04T19:35:25.683574" elapsed="2.228165"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:25.683236" elapsed="2.228689"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:23.470919" elapsed="4.441373"/>
+</test>
+<test id="s1-s3-t2" name="Deve permitir acessar um post individual a partir de um card na Home" line="44">
+<kw name="Abrir Navegador e Acessar Home" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-04T19:35:27.915524" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x0000028D91F3E450&gt;</msg>
+<var>${service}</var>
+<arg>sys.modules['selenium.webdriver.chrome.service'].Service(executable_path="${CHROMEDRIVER}")</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-04T19:35:27.914597" elapsed="0.000983"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-04T19:35:27.916181" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000028D91F3E690&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-04T19:35:27.915838" elapsed="0.000383"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:27.916693" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg time="2025-06-04T19:35:29.195478" level="INFO">${driver} = 6</msg>
+<var>${driver}</var>
+<arg>Chrome</arg>
+<arg>options=${options}</arg>
+<arg>service=${service}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-06-04T19:35:27.916397" elapsed="1.279152"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:29.196081" level="INFO">Opening url 'http://localhost:8000'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-06-04T19:35:29.195830" elapsed="0.741462"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-06-04T19:35:29.937617" elapsed="0.063682"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:27.914227" elapsed="2.087318"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css=${HOME_SELECTORS['cardsPost']}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:30.002045" elapsed="0.035360"/>
+</kw>
+<kw name="Clicar Primeiro Link do Primeiro Card">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:30.038705" level="INFO">Clicking element 'xpath=(//div[contains(@class,'post-preview')])[1]//a[1]'.</msg>
+<arg>xpath=(//div[contains(@class,'post-preview')])[1]//a[1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:30.038443" elapsed="0.268744"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:30.037980" elapsed="0.269532"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=${POST_SELECTORS['titulo']}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:30.308009" elapsed="0.030128"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:30.359145" level="INFO">Element 'xpath=//div[contains(@class, 'post-heading')]//h1' is displayed.</msg>
+<arg>xpath=${POST_SELECTORS['titulo']}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:30.338604" elapsed="0.020703"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:30.385981" level="INFO">${titulo} = Man must explore, and this is exploration at its greatest</msg>
+<var>${titulo}</var>
+<arg>xpath=${POST_SELECTORS['titulo']}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:30.359760" elapsed="0.026288"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-06-04T19:35:30.386529" level="INFO">Length is 57.</msg>
+<arg>${titulo}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-06-04T19:35:30.386351" elapsed="0.000234"/>
+</kw>
+<kw name="Fechar Navegador" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-06-04T19:35:30.387147" elapsed="2.224019"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:30.386905" elapsed="2.224416"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:27.913318" elapsed="4.698237"/>
+</test>
+<status status="PASS" start="2025-06-04T19:35:23.462445" elapsed="9.149799"/>
+</suite>
+<suite id="s1-s4" name="Post" source="C:\Users\Jonnas\Documents\dom-heal-poc\RobotFramework\tests\post.robot">
+<kw name="Carregar Seletores Post" type="SETUP">
+<kw name="Load Json From File" owner="JSONLibrary">
+<msg time="2025-06-04T19:35:32.619117" level="INFO">${json_post} = {'menu': "//nav//a[@href='post.html']", 'titulo': "//div[contains(@class, 'post-heading')]//h1", 'autor': "//span[contains(@class, 'meta')]//a", 'meta': "//span[contains(@class, 'meta')]", 'conteudo':...</msg>
+<var>${json_post}</var>
+<arg>../elements/post.json</arg>
+<doc>Load JSON from file.</doc>
+<status status="PASS" start="2025-06-04T19:35:32.618281" elapsed="0.000964"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-06-04T19:35:32.619699" level="INFO">${POST_SELECTORS} = {'menu': "//nav//a[@href='post.html']", 'titulo': "//div[contains(@class, 'post-heading')]//h1", 'autor': "//span[contains(@class, 'meta')]//a", 'meta': "//span[contains(@class, 'meta')]", 'conteudo':...</msg>
+<arg>${POST_SELECTORS}</arg>
+<arg>${json_post}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-06-04T19:35:32.619461" elapsed="0.000282"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:32.618031" elapsed="0.001786"/>
+</kw>
+<test id="s1-s4-t1" name="Deve exibir corretamente o título, autor e data do post individual" line="30">
+<kw name="Abrir Navegador e Acessar Menu Post" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-04T19:35:32.621462" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x0000028D91EC7DF0&gt;</msg>
+<var>${service}</var>
+<arg>sys.modules['selenium.webdriver.chrome.service'].Service(executable_path="${CHROMEDRIVER}")</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-04T19:35:32.620659" elapsed="0.000862"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-04T19:35:32.621984" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000028D91EC7F00&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-04T19:35:32.621714" elapsed="0.000298"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:32.622371" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg time="2025-06-04T19:35:33.886284" level="INFO">${driver} = 7</msg>
+<var>${driver}</var>
+<arg>Chrome</arg>
+<arg>options=${options}</arg>
+<arg>service=${service}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-06-04T19:35:32.622147" elapsed="1.264195"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:33.886744" level="INFO">Opening url 'http://localhost:8000'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-06-04T19:35:33.886541" elapsed="0.719388"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-06-04T19:35:34.606287" elapsed="0.074358"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:34.682094" level="INFO">Clicking element 'xpath=//nav//a[@href='post.html']'.</msg>
+<arg>xpath=${POST_SELECTORS['menu']}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:34.680957" elapsed="0.218534"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:32.620392" elapsed="2.279321"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=${POST_SELECTORS['titulo']}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:34.900203" elapsed="0.031638"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:34.957404" level="INFO">Element 'xpath=//div[contains(@class, 'post-heading')]//h1' is displayed.</msg>
+<arg>xpath=${POST_SELECTORS['titulo']}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:34.932259" elapsed="0.025384"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:34.959042" level="INFO">Verifying element 'xpath=//div[contains(@class, 'post-heading')]//h1' contains exact text 'Man must explore, and this is exploration at its greatest'.</msg>
+<arg>xpath=${POST_SELECTORS['titulo']}</arg>
+<arg>Man must explore, and this is exploration at its greatest</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2025-06-04T19:35:34.958174" elapsed="0.027361"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:35.006595" level="INFO">Element 'xpath=//span[contains(@class, 'meta')]//a' is displayed.</msg>
+<arg>xpath=${POST_SELECTORS['autor']}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:34.985907" elapsed="0.020796"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:35.028408" level="INFO">Element 'xpath=//span[contains(@class, 'meta')]//a' contains text 'Start Bootstrap'.</msg>
+<arg>xpath=${POST_SELECTORS['autor']}</arg>
+<arg>Start Bootstrap</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2025-06-04T19:35:35.007496" elapsed="0.021006"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:35.051522" level="INFO">Element 'xpath=//span[contains(@class, 'meta')]' contains text 'August 24, 2023'.</msg>
+<arg>xpath=${POST_SELECTORS['meta']}</arg>
+<arg>August 24, 2023</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2025-06-04T19:35:35.028813" elapsed="0.022803"/>
+</kw>
+<kw name="Fechar Navegador" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-06-04T19:35:35.052261" elapsed="2.310563"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:35.052005" elapsed="2.310972"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:32.619889" elapsed="4.743319"/>
+</test>
+<test id="s1-s4-t2" name="Deve exibir o conteúdo principal do post" line="40">
+<kw name="Abrir Navegador e Acessar Menu Post" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-04T19:35:37.365825" level="INFO">${service} = &lt;selenium.webdriver.chrome.service.Service object at 0x0000028D91FA0050&gt;</msg>
+<var>${service}</var>
+<arg>sys.modules['selenium.webdriver.chrome.service'].Service(executable_path="${CHROMEDRIVER}")</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-04T19:35:37.364979" elapsed="0.000890"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-06-04T19:35:37.366335" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000028D91FA0160&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-06-04T19:35:37.366071" elapsed="0.000300"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:37.366751" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg time="2025-06-04T19:35:38.652307" level="INFO">${driver} = 8</msg>
+<var>${driver}</var>
+<arg>Chrome</arg>
+<arg>options=${options}</arg>
+<arg>service=${service}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-06-04T19:35:37.366515" elapsed="1.285839"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:38.652783" level="INFO">Opening url 'http://localhost:8000'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-06-04T19:35:38.652607" elapsed="0.058779"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-06-04T19:35:38.711789" elapsed="0.688623"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:39.401959" level="INFO">Clicking element 'xpath=//nav//a[@href='post.html']'.</msg>
+<arg>xpath=${POST_SELECTORS['menu']}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:39.400789" elapsed="0.214439"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:37.364646" elapsed="2.250831"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=${POST_SELECTORS['conteudo']}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:39.616085" elapsed="0.036417"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:39.691995" level="INFO">Element 'xpath=//div[contains(@class, 'bloco-texto')]/p' is displayed.</msg>
+<arg>xpath=${POST_SELECTORS['conteudo']}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-04T19:35:39.653012" elapsed="0.039165"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-06-04T19:35:39.719740" level="INFO">${conteudo} = Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus c...</msg>
+<var>${conteudo}</var>
+<arg>xpath=${POST_SELECTORS['conteudo']}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-04T19:35:39.692668" elapsed="0.027117"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-06-04T19:35:39.720258" level="INFO">Length is 211.</msg>
+<arg>${conteudo}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-06-04T19:35:39.720093" elapsed="0.000213"/>
+</kw>
+<kw name="Fechar Navegador" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-06-04T19:35:39.720898" elapsed="2.221802"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:39.720608" elapsed="2.222246"/>
+</kw>
+<status status="PASS" start="2025-06-04T19:35:37.364024" elapsed="4.579098"/>
+</test>
+<status status="PASS" start="2025-06-04T19:35:32.613087" elapsed="9.330934"/>
+</suite>
+<status status="PASS" start="2025-06-04T19:35:03.073545" elapsed="38.871765"/>
+</suite>
+<statistics>
+<total>
+<stat pass="8" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="8" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="About">Tests.About</stat>
+<stat pass="3" fail="0" skip="0" id="s1-s2" name="Contact">Tests.Contact</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s3" name="Home">Tests.Home</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s4" name="Post">Tests.Post</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
