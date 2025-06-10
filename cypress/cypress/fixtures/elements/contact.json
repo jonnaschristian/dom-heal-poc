@@ -1,5 +1,5 @@
 {
-  "menu": ".menu-contato",
+  "menu": "#menuContato",
   "tituloContato": "#tituloContato",
   "inputNome": "#campoNome",
   "inputEmail": "#campoEmail",
