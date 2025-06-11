@@ -1,0 +1,11 @@
+{
+  "menu": "#menuContato",
+  "tituloContato": "#tituloContato",
+  "inputNome": "#campoNome",
+  "inputEmail": "#campoEmail",
+  "inputTelefone": "#campoTelefone",
+  "inputMensagem": "#campoMensagem",
+  "btnEnviar": "#submitButton",
+  "mensagemSucesso": "#mensagemSucesso",
+  "mensagemErro": "#msgDeErro"
+}

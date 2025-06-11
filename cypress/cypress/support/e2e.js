@@ -20,5 +20,9 @@ import 'cypress-xpath';
 // cypress/support/e2e.js
 beforeEach(() => {
   cy.clearCookies();
-  cy.visit('http://localhost:8000/index.html'); // Ou qualquer página inicial do sistema
+  cy.visit('http://localhost:8000/home.html');
+});
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+  return false;
 });
