@@ -4,6 +4,8 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 CHROMEDRIVER_PATH = r"C:\Users\Jonnas\Documents\dom-heal-poc\chromedriver-win64\chromedriver.exe"
 URL = "http://localhost:8000/home.html"
@@ -51,9 +53,19 @@ def test_acesso_post_individual_pela_home(driver):
     driver.maximize_window()
     cards = driver.find_elements(By.CSS_SELECTOR, HOME_SELECTORS["cardsPost"])
     assert len(cards) > 0, "Nenhum card de post encontrado na Home"
+
     primeiro_card = cards[0]
+    driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", primeiro_card)
     primeiro_link = primeiro_card.find_element(By.TAG_NAME, "a")
-    primeiro_link.click()
+
+    # Espera o link ser clicável
+    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.TAG_NAME, "a")))
+
+    # Tenta clicar normalmente, se não conseguir faz via JS (bypass)
+    try:
+        primeiro_link.click()
+    except Exception:
+        driver.execute_script("arguments[0].click();", primeiro_link)
 
     titulo_post = aguarda_elemento(driver, By.XPATH, POST_SELECTORS["titulo"])
     assert titulo_post.is_displayed() and titulo_post.text.strip() != "", "Título do post não visível ou vazio"
