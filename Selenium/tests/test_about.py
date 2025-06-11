@@ -1,5 +1,6 @@
 import json
 import time
+import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -8,21 +9,26 @@ from selenium.webdriver.common.by import By
 CHROMEDRIVER_PATH = r"C:\Users\Jonnas\Documents\dom-heal-poc\chromedriver-win64\chromedriver.exe"
 URL = "http://localhost:8000/home.html"
 
-# Carrega os seletores do JSON (ajuste o caminho conforme sua estrutura!)
-with open("../elements/about.json", encoding="utf-8") as f:
-    SELECTORS = json.load(f)
+@pytest.fixture
+def driver():
+    service = Service(CHROMEDRIVER_PATH)
+    options = webdriver.ChromeOptions()
+    driver = webdriver.Chrome(service=service, options=options)
+    yield driver
+    driver.quit()
 
-service = Service(CHROMEDRIVER_PATH)
-options = webdriver.ChromeOptions()
-driver = webdriver.Chrome(service=service, options=options)
+def load_selectors():
+    with open("../elements/about.json", encoding="utf-8") as f:
+        return json.load(f)
 
-try:
+def test_about_page(driver):
+    SELECTORS = load_selectors()
     driver.get(URL)
     driver.maximize_window()
 
     # Clica no menu About
     driver.find_element(By.CSS_SELECTOR, SELECTORS["menu"]).click()
-    time.sleep(1)  # Ajuste para WebDriverWait se quiser mais robusto
+    time.sleep(1)  # WebDriverWait seria mais robusto, mas mantendo como no original
 
     # Valida título
     titulo = driver.find_element(By.CSS_SELECTOR, SELECTORS["titulo"])
@@ -35,8 +41,3 @@ try:
     # Valida texto principal visível e não vazio
     texto = driver.find_element(By.CSS_SELECTOR, SELECTORS["texto"])
     assert texto.is_displayed() and texto.text.strip() != "", "Texto principal não visível ou vazio"
-
-    print("Teste About PASSOU!")
-
-finally:
-    driver.quit()
