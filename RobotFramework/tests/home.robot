@@ -28,8 +28,6 @@ Abrir Navegador e Acessar Home
 Fechar Navegador
     Close Browser
 
-Clicar Primeiro Link do Primeiro Card
-    Click Element    xpath=(//div[contains(@class,'post-preview')])[1]//a[1]
 
 *** Test Cases ***
 Deve exibir corretamente o título e subtítulo do blog
@@ -43,8 +41,9 @@ Deve exibir corretamente o título e subtítulo do blog
 
 Deve permitir acessar um post individual a partir de um card na Home
     [Setup]        Abrir Navegador e Acessar Home
+    Scroll Element Into View         css=${HOME_SELECTORS['cardsPost']}
     Wait Until Element Is Visible    css=${HOME_SELECTORS['cardsPost']}    10s
-    Clicar Primeiro Link do Primeiro Card
+    Click Element                    css=${HOME_SELECTORS['cardsPost']} 
     Wait Until Element Is Visible    xpath=${POST_SELECTORS['titulo']}    10s
     Element Should Be Visible        xpath=${POST_SELECTORS['titulo']}
     ${titulo}=    Get Text           xpath=${POST_SELECTORS['titulo']}
