@@ -6,7 +6,7 @@ Library           JSONLibrary
 Suite Setup       Carregar Seletores Home e Post
 
 *** Variables ***
-${URL}            http://localhost:8000
+${URL}            http://localhost:8000/home.html
 ${CHROMEDRIVER}   ../../chromedriver-win64/chromedriver.exe
 ${HOME_SELECTORS}      ${EMPTY}
 ${POST_SELECTORS}      ${EMPTY}
