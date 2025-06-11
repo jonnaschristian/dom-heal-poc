@@ -6,5 +6,6 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     specPattern: 'cypress/e2e/specs/*.cy.js',
+    experimentalRunAllSpecs: true
   },
 });
