@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 
 CHROMEDRIVER_PATH = r"C:\Users\Jonnas\Documents\dom-heal-poc\chromedriver-win64\chromedriver.exe"
-URL = "http://localhost:8000"
+URL = "http://localhost:8000/home.html"
 
 with open("../elements/contact.json", encoding="utf-8") as f:
     SELECTORS = json.load(f)

@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 
 # Caminho para o chromedriver
 CHROMEDRIVER_PATH = r"C:\Users\Jonnas\Documents\dom-heal-poc\chromedriver-win64\chromedriver.exe"
-URL = "http://localhost:8000"
+URL = "http://localhost:8000/home.html"
 
 # Carrega os seletores do JSON (ajuste o caminho conforme sua estrutura!)
 with open("../elements/about.json", encoding="utf-8") as f:
