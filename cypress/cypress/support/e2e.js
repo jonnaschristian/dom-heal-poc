@@ -20,7 +20,7 @@ import 'cypress-xpath';
 // cypress/support/e2e.js
 beforeEach(() => {
   cy.clearCookies();
-  cy.visit('http://localhost:8001/home.html');
+  cy.visit('http://localhost:8000/home.html');
 });
 
 Cypress.on('uncaught:exception', (err, runnable) => {
