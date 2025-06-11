@@ -1,5 +1,5 @@
 {
-  "menu": ".menu-contato",
+  "menu": "#menuContato",
   "tituloContato": "#tituloContato",
   "inputNome": "#campoNome",
   "inputEmail": "#campoEmail",
@@ -7,5 +7,5 @@
   "inputMensagem": "#campoMensagem",
   "btnEnviar": "#submitButton",
   "mensagemSucesso": "#mensagemSucesso",
-  "mensagemErro": "#mensagemErro"
+  "mensagemErro": "#msgDeErro"
 }
