@@ -171,3 +171,4 @@ cython_debug/
 .pypirc
 
 chromedriver-win64/
+node_modules/

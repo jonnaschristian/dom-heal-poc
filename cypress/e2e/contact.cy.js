@@ -1,10 +1,10 @@
 import { faker } from '@faker-js/faker';
 
-describe('Menu Contact', () => {
+describe('Menu Contato', () => {
   let contact;
 
   before(() => {
-    cy.fixture('elements/contact.json').then((dados) => {
+    cy.fixture('contact.json').then((dados) => {
       contact = dados;
     });
   });

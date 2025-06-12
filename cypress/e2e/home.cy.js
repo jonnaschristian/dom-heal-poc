@@ -2,10 +2,10 @@ describe('Menu Home', () => {
   let home, post;
 
   before(() => {
-    cy.fixture('elements/home.json').then((dadosHome) => {
+    cy.fixture('home.json').then((dadosHome) => {
       home = dadosHome;
     });
-    cy.fixture('elements/post.json').then((dadosPost) => {
+    cy.fixture('post.json').then((dadosPost) => {
       post = dadosPost;
     });
   });

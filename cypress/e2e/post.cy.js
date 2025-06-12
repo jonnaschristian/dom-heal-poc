@@ -2,7 +2,7 @@ describe('Menu Post', () => {
   let post;
 
   before(() => {
-    cy.fixture('elements/post.json').then((dados) => {
+    cy.fixture('post.json').then((dados) => {
       post = dados;
     });
   });

@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/jonnaschristian/dom-heal-poc#readme",
   "devDependencies": {
-    "cypress": "^14.4.1"
+    "@faker-js/faker": "^9.8.0",
+    "cypress": "^14.4.1",
+    "cypress-xpath": "^2.0.1"
   }
 }
