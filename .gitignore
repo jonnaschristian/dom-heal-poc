@@ -10,14 +10,12 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
 lib/
 lib64/
 parts/
-sdist/
 var/
 wheels/
 share/python-wheels/
@@ -144,7 +142,6 @@ venv.bak/
 .ropeproject
 
 # mkdocs documentation
-/site
 
 # mypy
 .mypy_cache/
@@ -174,3 +171,4 @@ cython_debug/
 .pypirc
 
 chromedriver-win64/
+node_modules/
