@@ -1,6 +1,0 @@
-{
-  "menu": "[name='menuSobre']",
-  "titulo": "[name='tituloSobre']",
-  "subtitulo": "[name='subtituloSobre']",
-  "texto": "[name='blocoTexto']"
-}
