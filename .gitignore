@@ -172,3 +172,5 @@ cython_debug/
 
 chromedriver-win64/
 node_modules/
+.env
+__pycache__/
