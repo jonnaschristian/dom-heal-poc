@@ -5,7 +5,10 @@
 
 Este repositório apresenta uma POC (Prova de Conceito) para validar a biblioteca `dom-heal`, demonstrando como ela pode ser integrada e utilizada em quaisquer frameworks de testes automatizados a partir de cenários reais e controlados. Para uma validação controlada, foram definidos três principais e diferentes frameworks de testes - Cypress, Robot Framework e Selenium.
 
+## 🧑‍🏫 Autor
 
+Elaborado por **Jonnas Christian Sousa de Paiva**, fruto do Trabalho de Conclusão de Curso (TCC).   
+Contato: [jonnaschristian@gmail.com](mailto:jonnaschristian@gmail.com)
 
 ## 🎯 Objetivos da POC
 
@@ -256,8 +259,6 @@ Antes de rodar qualquer teste, é necessário subir os servidores locais dos sit
 >
 > Siga os passos abaixo para executar os testes automatizados no Site B e observar o impacto dessas mudanças.
 
-
-
 1. **Ajuste a configuração dos testes para apontar para o Site B**
     - Em cada framework de testes, é necessário alterar manualmente a URL base dos testes de `http://localhost:8000/home.html` (Site A) para `http://localhost:8001/home.html` (Site B):
         - **Cypress:**  
@@ -302,8 +303,6 @@ Antes de rodar qualquer teste, é necessário subir os servidores locais dos sit
 >
 > O objetivo é demonstrar que, após a execução do DOM-Heal, é possível atualizar os arquivos de seletores e restaurar o funcionamento dos testes automatizados mesmo após mudanças no front-end.
 
-
-
 #### **Passos para executar o DOM-Heal**
 
 1. **Certifique-se de que o servidor local do Site B está ativo em** `http://localhost:8001/home.html`
@@ -342,97 +341,23 @@ Antes de rodar qualquer teste, é necessário subir os servidores locais dos sit
 > Dessa forma, é possível analisar a capacidade de self-healing em uma maior diversidade de cenários, verificando como o DOM-Heal se comporta diante das diferentes implementações e estruturas de testes automatizados, e obtendo uma visão abrangente dos benefícios da abordagem proposta.
 
 
-### 7. **(Opcional) Assista ao tutorial em vídeo**
 
-Assista ao passo a passo em vídeo:  
+
+## 🎥 **Tutorial em Vídeo — Execução Completa da POC**
+
+Para complementar o guia passo a passo acima, disponibilizamos um **tutorial em vídeo** mostrando na prática toda a execução da POC, desde a preparação do ambiente até a validação final dos testes corrigidos pelo DOM-Heal.
+
+> **O vídeo cobre:**
+> - Clonagem do repositório e instalação dos pré-requisitos;
+> - Inicialização dos ambientes dos Sites A e B;
+> - Execução dos testes em Cypress, Robot Framework e Selenium;
+> - Simulação de falhas (migração para o Site B);
+> - Aplicação do mecanismo de self-healing (DOM-Heal);
+> - Análise dos resultados e a revalidação dos testes.     
+
+
+**Assista ao vídeo completo aqui:** 
 [Coloque o link aqui após gravar]
 
----
-
-## ℹ️ **Dicas e Observações**
-
-- Cada framework possui sua própria pasta de seletores (sempre formato JSON).
-- Recomenda-se usar um arquivo de seletores por página.
-- A biblioteca DOM-Heal é chamada externamente, via CLI.
-
----
-
-## ❓ **Dúvidas Frequentes**
-
-- **Erro ao instalar dependências?**  
-  Verifique as versões do Python/Node.js e se está no diretório correto.
-
-- **Problemas ao rodar comandos?**  
-  Confira se está no ambiente virtual e se todas as dependências foram instaladas.
-
-- **Não sabe por onde começar?**  
-  Siga o passo a passo acima ou assista ao vídeo do tutorial.
-
-
----
-
-## 🕸️ Sites A e B
-
-- **Site A:** É a versão base/original. Os arquivos HTML/CSS/JS aqui representam o funcionamento esperado do sistema — é a referência dos testes.
-- **Site B:** É uma versão com pequenas mudanças nos atributos dos elementos (id, class, name, etc), simulando mudanças típicas de manutenção/evolução de front-end e **quebrando** intencionalmente alguns seletores.
-
-> **O objetivo é simular um cenário real: ao migrar os testes para o site B, alguns testes falham pois os seletores antigos não existem mais.**
-
----
-
-## 🧪 Frameworks de Teste
-
-A POC inclui o mesmo cenário de teste implementado nos três principais frameworks de automação web:
-
-- **Cypress:** Testes escritos em JavaScript, usando os seletores armazenados nos fixtures JSON.
-- **Robot Framework:** Testes em linguagem tabular, também utilizando arquivos JSON de seletores.
-- **Selenium (Python):** Testes Python, lendo os seletores de arquivos JSON.
-
-> Todos os frameworks consomem os mesmos arquivos de seletores, reforçando a abordagem universal do DOM-Heal.
-
----
-
-## ⚙️ Fluxo de Uso/Revalidação
-
-1. **Execute os testes automatizados no Site A**  
-   (devem passar, já que os seletores batem com o DOM atual)
-
-2. **Altere o alvo dos testes para o Site B**  
-   (alguns testes vão falhar, pois os seletores estão desatualizados)
-
-3. **Rode o DOM-Heal passando o JSON e a URL do Site B**  
-   ```bash
-   dom-heal rodar --json ./Cypress/fixtures/home.json --url http://localhost:8000/siteB/home.html
-   ```
-
-4. **Valide que o JSON foi atualizado**  
-   O arquivo agora contém os seletores ajustados para o Site B.  
-   O log de alterações detalha o que mudou.
-
-5. **Rode novamente os testes com o JSON atualizado**  
-   (Os testes devem passar mesmo com as alterações do front-end, sem necessidade de intervenção manual)
-
----
-
-## 📝 Observações Importantes
-
-- **Cada framework tem sua própria pasta de elementos/fixtures, mas o formato é sempre JSON**.
-- É fundamental usar um arquivo de seletores por página para facilitar o controle das alterações.
-- A biblioteca DOM-Heal é externa ao projeto de testes: pode ser chamada como CLI ou integrada via adaptação.
-
----
-
-## 👨‍💻 Requisitos
-
-- Node.js (para Cypress)
-- Python 3.7+ (para Robot e Selenium)
-- Google Chrome instalado localmente
-
----
-
-## 🧑‍🏫 Autor
-
-Prova de Conceito por **Jonnas Christian Sousa de Paiva**  
-Contato: [jonnaschristian@gmail.com](mailto:jonnaschristian@gmail.com)
-
----
+> **Recomendação:**  
+> O vídeo é altamente recomendado para todos os participantes e avaliadores, especialmente para visualizar detalhes práticos da execução, tirar dúvidas pontuais e comparar com o comportamento esperado documentado no README.
