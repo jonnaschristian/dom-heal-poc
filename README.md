@@ -63,7 +63,7 @@ A POC inclui o mesmo cenário de teste implementado nos três principais framewo
 
 
 ## 🚀 **Como Executar a POC – Passo a Passo**
-
+Em caso de dúvidas, assista ao video tutorial no tópico seguinte que replica os passos abaixos.
 ### 1. **Clone ou Baixe o Repositório**
 
 Clone este repositório com o comando:
@@ -337,7 +337,7 @@ Antes de rodar qualquer teste, é necessário subir os servidores locais dos sit
     - É esperado que, agora, os testes passem normalmente, comprovando a eficácia do mecanismo de self-healing.
 
 > **Dica:**  
-> Para uma avaliação mais completa da ferramenta, recomenda-se **repetir o processo de execução do DOM-Heal para cada arquivo de seletores** utilizado nos diferentes frameworks da POC (Cypress, Robot Framework e Selenium), sempre ajustando o caminho do JSON e a URL conforme a página de teste.  
+> Para uma avaliação mais completa da ferramenta, recomenda-se **fazer o processo de execução do DOM-Heal para cada arquivo de seletores** utilizado nos diferentes frameworks da POC (Cypress, Robot Framework e Selenium), sempre ajustando o caminho do JSON e a URL conforme a página de teste.  
 > Dessa forma, é possível analisar a capacidade de self-healing em uma maior diversidade de cenários, verificando como o DOM-Heal se comporta diante das diferentes implementações e estruturas de testes automatizados, e obtendo uma visão abrangente dos benefícios da abordagem proposta.
 
 
@@ -345,7 +345,7 @@ Antes de rodar qualquer teste, é necessário subir os servidores locais dos sit
 
 ## 🎥 **Tutorial em Vídeo — Execução Completa da POC**
 
-Para complementar o guia passo a passo acima, disponibilizamos um **tutorial em vídeo** mostrando na prática toda a execução da POC, desde a preparação do ambiente até a validação final dos testes corrigidos pelo DOM-Heal.
+Para complementar o guia passo a passo acima, disponibilizei um **tutorial em vídeo** mostrando na prática toda a execução da POC, desde a preparação do ambiente até a validação final dos testes corrigidos pelo DOM-Heal.
 
 > **O vídeo cobre:**
 > - Clonagem do repositório e instalação dos pré-requisitos;
@@ -357,7 +357,7 @@ Para complementar o guia passo a passo acima, disponibilizamos um **tutorial em 
 
 
 **Assista ao vídeo completo aqui:** 
-[Coloque o link aqui após gravar]
+[]
 
 > **Recomendação:**  
-> O vídeo é altamente recomendado para todos os participantes e avaliadores, especialmente para visualizar detalhes práticos da execução, tirar dúvidas pontuais e comparar com o comportamento esperado documentado no README.
+> O vídeo é recomendado para todos os participantes e avaliadores para visualizar detalhes práticos da execução, tirar dúvidas pontuais e comparar com o comportamento esperado documentado no README.
