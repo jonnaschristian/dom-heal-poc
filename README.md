@@ -123,7 +123,14 @@ Ou [baixe o ZIP aqui](https://github.com/jonnaschristian/dom-heal-poc/archive/re
     ```bash
     npm install
     ```
-  - **Importante:** Sempre execute esse comando na raiz do projeto, e não dentro da pasta `cypress/`.
+
+  - Em seguida, para garantir a instalação correta do Cypress (especialmente para primeiro uso), rode:
+
+    ```bash
+    npx cypress install
+    ```
+
+  - **Importante:** Sempre execute os comandos acima na raiz do projeto, e não dentro da pasta `cypress/`.
 
 - **Robot Framework e dependências**  
 
