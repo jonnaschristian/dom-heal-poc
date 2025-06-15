@@ -188,9 +188,7 @@ Antes de rodar qualquer teste, é necessário subir os servidores locais dos sit
       ```
 
 
-
-
-### 5. **Execute os Testes Automatizados**
+### 5. **Execute os Testes Automatizados (Site A)**
 > **Contextualização:**  
 > Os testes de automação estão inicialmente configurados para rodar sobre o **Site A**.  
 > Dessa forma, **todos os testes devem passar sem erro** nos frameworks, validando que a base do projeto está funcionando corretamente.
@@ -201,7 +199,7 @@ Antes de rodar qualquer teste, é necessário subir os servidores locais dos sit
 
 - #### **A) Testes com Cypress**
 
-   1. Abra o Cypress:
+   1. Execute todos os testes Cypress:
 
          **Na raiz do projeto**, execute:
          ```bash
@@ -210,7 +208,7 @@ Antes de rodar qualquer teste, é necessário subir os servidores locais dos sit
          Isso abrirá a interface gráfica do Cypress, onde você pode selecionar e rodar os testes manualmente (os arquivos ficam em `cypress/e2e`).
 
    2. Observações:
-      - No modo visual, clique sobre cada arquivo de teste para executá-lo e ver os resultados no navegador.
+      - No modo visual, clique em "Run 4 specs" ou sobre cada arquivo de teste individualmente para execução e visualização dos resultados no navegador.
       - Não altere a estrutura da pasta `cypress/`, pois os testes esperam esse caminho padrão.
       - Se algum erro de dependência aparecer, repita `npm install` na raiz do projeto.
       - **Sempre execute os comandos acima na raiz do projeto (onde está o arquivo `package.json`).**
@@ -219,49 +217,130 @@ Antes de rodar qualquer teste, é necessário subir os servidores locais dos sit
 
    1. Execute todos os testes Robot Framework:
 
-         **Na raiz do projeto**, execute:
+         Em **RobotFramework/tests/**, execute:
          ```bash
-         robot RobotFramework/tests/
+         robot *.robot
          ```
          Isso executará todos os testes `.robot` da suíte, utilizando o ChromeDriver já incluído no projeto.
 
    2. Observações:
       - Os resultados aparecerão no terminal e um relatório detalhado será gerado nas pastas `log.html` e `report.html`.
-      - Sempre execute o comando a partir da raiz do projeto para garantir que o caminho do ChromeDriver seja reconhecido automaticamente.
       - Não altere a estrutura das pastas, nem mova os arquivos do `RobotFramework/tests/`.
       - Se houver erro relacionado ao driver, verifique se o Google Chrome está instalado e o arquivo `chromedriver.exe` está na pasta correta.
+      - **Sempre execute os comandos acima em RobotFramework/tests/.**
 
 - #### **C) Testes com Selenium**
 
    1. Execute todos os testes Selenium:
 
-         **Na raiz do projeto**, execute:
+         Em **Selenium/tests/**, execute:
          ```bash
-         pytest Selenium/tests/
+         pytest
          ```
          Isso executará todos os testes automatizados com Selenium, utilizando o ChromeDriver incluso no projeto.
 
    2. Observações:
       - Os resultados dos testes aparecerão diretamente no terminal.
-      - Sempre execute o comando a partir da raiz do projeto para garantir que o caminho do ChromeDriver seja reconhecido automaticamente.
       - Não altere a estrutura das pastas, nem mova os arquivos do `Selenium/tests/`.
       - Se houver erro relacionado ao driver, verifique se o Google Chrome está instalado e o arquivo `chromedriver.exe` está na pasta correta.
+      - **Sempre execute os comandos acima em Selenium/tests/.**
+
+### 6. **Simulando falha de testes (migração para o Site B)**
+
+> **Contextualização:**  
+> Após validar que todos os testes passam normalmente no **Site A**, o próximo passo é simular um cenário realista de manutenção do sistema: mudanças em atributos dos elementos do front-end que resultam na quebra de seletores utilizados nos testes automatizados.
+>
+> Para isso, utilizaremos o **Site B**, que contém alterações propositalmente feitas nesses atributos. Ao executar os mesmos testes sobre o Site B, é esperado que ocorram falhas, indicando que os seletores antigos não conseguem mais localizar os elementos modificados.
+>
+> Esse cenário evidencia a importância de mecanismos automáticos de adaptação de seletores, validando o propósito do DOM-Heal.
+>
+> Siga os passos abaixo para executar os testes automatizados no Site B e observar o impacto dessas mudanças.
 
 
 
+1. **Ajuste a configuração dos testes para apontar para o Site B**
+    - Em cada framework de testes, é necessário alterar manualmente a URL base dos testes de `http://localhost:8000/home.html` (Site A) para `http://localhost:8001/home.html` (Site B):
+        - **Cypress:**  
+          Edite o arquivo `Cypress/support/e2e.js` e altere a URL base utilizada nos comandos `cy.visit()` para `http://localhost:8001/home.html`.
+        - **Robot Framework:**  
+          Em **cada arquivo de teste `.robot`** na pasta `RobotFramework/tests/`, localize a variável `${URL}` e altere seu valor para `http://localhost:8001/home.html`.
+        - **Selenium:**  
+          Em **cada arquivo de teste Python** na pasta `Selenium/tests/`, localize a variável `URL` e altere seu valor para `http://localhost:8001/home.html`.
+
+2. **Execute novamente os testes em cada framework**  
+   Repita o procedimento do passo 5, agora rodando contra o Site B.
+
+    - **Cypress:**  
+      ```bash
+      npx cypress open
+      ```
+      (na `raiz` do projeto)
+
+    - **Robot Framework:**  
+      ```bash
+      robot *.robot
+      ```
+      (Na pasta `RobotFramework/tests/`)
+
+    - **Selenium:**  
+      ```bash
+      pytest
+      ```
+      (Na pasta `Selenium/tests/`)
+
+3. **Observe os resultados**  
+   - É esperado que vários testes **falhem**
+   - Isso confirma que as mudanças no front-end **quebraram os seletores antigos**.
+
+> **Se todos os testes passaram no Site B, verifique se a versão correta do site está rodando e se os arquivos realmente estão alterados. O esperado é haver falhas para evidenciar a necessidade do self-healing.**
 
 
-### 6. **Simulando quebra de testes**
+### 7. **Self-healing (executando o DOM-Heal)**
 
-1. Altere o alvo dos testes para o **Site B** (estrutura com atributos modificados).
-2. Execute os testes novamente. Alguns devem falhar devido a seletores desatualizados.
-3. Rode o DOM-Heal para atualizar os seletores automaticamente:
-    ```bash
-    dom-heal rodar --json ./Cypress/fixtures/home.json --url http://localhost:8000/siteB/home.html
-    ```
-4. Valide que o arquivo JSON foi atualizado e rode novamente os testes – agora devem passar mesmo após as mudanças no DOM.
+> **Contextualização:**  
+> Com os testes automatizados quebrando no Site B devido às mudanças nos seletores, agora será utilizada a biblioteca **DOM-Heal** para identificar automaticamente os seletores que não funcionam mais e sugerir/adaptar novas referências para os elementos modificados no DOM.
+>
+> O objetivo é demonstrar que, após a execução do DOM-Heal, é possível atualizar os arquivos de seletores e restaurar o funcionamento dos testes automatizados mesmo após mudanças no front-end.
 
----
+
+
+#### **Passos para executar o DOM-Heal**
+
+1. **Certifique-se de que o servidor local do Site B está ativo em** `http://localhost:8001/home.html`
+
+2. **Execute o comando do DOM-Heal apontando para o arquivo de seletores que deseja corrigir**
+
+    - O comando geral é:
+
+      ```bash
+      dom-heal rodar --json "CAMINHO/DO/ARQUIVO.json" --url URL_DA_PAGINA_SITE_B
+      ```
+
+    - **Exemplo prático — corrigindo seletores do arquivo `contact.json` do Selenium:**
+
+      ```bash
+      dom-heal rodar --json "C:\Users\Jonnas\Documents\dom-heal-poc\Selenium\elements\contact.json" --url http://localhost:8001/contact.html
+      ```
+
+    - **Observações:**
+      - O parâmetro `--json` deve apontar para o caminho exato do arquivo de seletores utilizado pelo framework.
+      - O parâmetro `--url` deve ser a URL da página do Site B referente ao teste (por exemplo, `http://localhost:8001/contact.html`).
+      - O comando pode ser rodado em qualquer diretório, desde que o caminho passado nos parâmetros esteja correto.
+
+3. **Verifique o resultado**
+    - O arquivo JSON escolhido será automaticamente atualizado com os novos seletores sugeridos.
+    - Além disso, será gerado um arquivo chamado **`ElementosAlterados.json`**, contendo **somente os elementos que foram corrigidos** pelo DOM-Heal.
+    - Caso deseje manter um backup, salve uma cópia do JSON original antes de rodar o comando.
+    - Você pode (e deve) executar todos os arquivos de seletores** utilizados nos diferentes frameworks da POC
+
+4. **Rode novamente os testes automatizados**
+    - Após a correção de elementos, execute os testes referentes aos que foram feitos o self-healing.
+    - É esperado que, agora, os testes passem normalmente, comprovando a eficácia do mecanismo de self-healing.
+
+> **Dica:**  
+> Para uma avaliação mais completa da ferramenta, recomenda-se **repetir o processo de execução do DOM-Heal para cada arquivo de seletores** utilizado nos diferentes frameworks da POC (Cypress, Robot Framework e Selenium), sempre ajustando o caminho do JSON e a URL conforme a página de teste.  
+> Dessa forma, é possível analisar a capacidade de self-healing em uma maior diversidade de cenários, verificando como o DOM-Heal se comporta diante das diferentes implementações e estruturas de testes automatizados, e obtendo uma visão abrangente dos benefícios da abordagem proposta.
+
 
 ### 7. **(Opcional) Assista ao tutorial em vídeo**
 
