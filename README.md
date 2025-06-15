@@ -363,8 +363,8 @@ Para complementar o guia passo a passo acima, disponibilizei um **tutorial em v�
 > - Análise dos resultados e a revalidação dos testes.     
 
 
-**Assista ao vídeo completo aqui:** 
-[]
+**Assista ao vídeo completo aqui:**   
+[Vídeo — Execução Completa da POC](https://youtu.be/hcCrL-2_MFo)
 
 > **Recomendação:**  
 > O vídeo é recomendado para todos os participantes e avaliadores para visualizar detalhes práticos da execução, tirar dúvidas pontuais e comparar com o comportamento esperado documentado no README.
