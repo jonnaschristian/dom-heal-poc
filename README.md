@@ -5,10 +5,11 @@
 
 Este repositório apresenta uma POC (Prova de Conceito) para validar a biblioteca `dom-heal`, demonstrando como ela pode ser integrada e utilizada em quaisquer frameworks de testes automatizados a partir de cenários reais e controlados. Para uma validação controlada, foram definidos três principais e diferentes frameworks de testes - Cypress, Robot Framework e Selenium.
 
-## 🧑‍🏫 Autor
+## 🧑‍🏫 Autoria
 
-Elaborado por **Jonnas Christian Sousa de Paiva**, fruto do Trabalho de Conclusão de Curso (TCC).   
-Contato: [jonnaschristian@gmail.com](mailto:jonnaschristian@gmail.com)
+Elaborado por **Jonnas Christian Sousa de Paiva**  
+Trabalho de Conclusão de Curso (TCC) – Ciência da Computação – UECE  
+Orientação: **Prof. Dr. Ismayle de Sousa Santos**
 
 ## 🎯 Objetivos da POC
 
