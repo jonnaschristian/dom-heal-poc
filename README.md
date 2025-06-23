@@ -63,6 +63,27 @@ A POC inclui o mesmo cenário de teste implementado nos três principais framewo
 
 
 
+## 🎥 **Tutorial em Vídeo — Execução Completa da POC**
+
+**Tutorial em vídeo** mostrando na prática toda a execução da POC, desde a preparação do ambiente até a validação final dos testes corrigidos pelo DOM-Heal.
+
+> **O vídeo cobre:**
+> - Clonagem do repositório e instalação dos pré-requisitos;
+> - Inicialização dos ambientes dos Sites A e B;
+> - Execução dos testes em Cypress, Robot Framework e Selenium;
+> - Simulação de falhas (migração para o Site B);
+> - Aplicação do mecanismo de self-healing (DOM-Heal);
+> - Análise dos resultados e a revalidação dos testes.     
+
+
+**Assista ao vídeo completo aqui:**   
+[Vídeo — Execução Completa da POC](https://youtu.be/hcCrL-2_MFo)
+
+> **Recomendação:**  
+> O vídeo é recomendado para todos os participantes e avaliadores para visualizar detalhes práticos da execução, tirar dúvidas pontuais e comparar com o comportamento esperado documentado no README.
+
+
+
 ## 🚀 **Como Executar a POC – Passo a Passo**
 Em caso de dúvidas, assista ao video tutorial no tópico seguinte que replica os passos abaixos.
 ### 1. **Clone ou Baixe o Repositório**
@@ -107,15 +128,17 @@ Ou [baixe o ZIP aqui](https://github.com/jonnaschristian/dom-heal-poc/archive/re
     node --version
     ```
 
-- **Google Chrome**
-  - Faça o download em:  
+- **WebDriver (ChromeDriver)**
+  - Faça o download do Google Chrome na versão mais recente:  
   [Download Chrome](https://www.google.com/chrome/)
 
-- **WebDriver (ChromeDriver)**
+  - Faça o download do ChromeDriver na versão mais recente:  
+  [Download ChromeDriver](https://developer.chrome.com/docs/chromedriver/downloads?hl=pt-br)
+
   - Já está incluso no projeto: não precisa instalar nem baixar nada extra.
   - O arquivo está em: `chromedriver-win64/chromedriver.exe`
   - Usado automaticamente nos testes Robot Framework e Selenium.
-  - **Obrigatório:** Ter o Google Chrome instalado.
+  - **Obrigatório:** Ter o Google Chrome instalado em versão similar a do ChromeDriver.
 
 - **Cypress e dependências**
   - Todas as bibliotecas necessárias (`cypress`, `@faker-js/faker`, `cypress-xpath`) já estão declaradas no arquivo `package.json`.
@@ -315,7 +338,7 @@ Antes de rodar qualquer teste, é necessário subir os servidores locais dos sit
 
 1. **Certifique-se de que o servidor local do Site B está ativo em** `http://localhost:8001/home.html`
 
-2. **Execute o comando do DOM-Heal apontando para o arquivo de seletores que deseja corrigir**
+2. **Execute o comando do DOM-Heal apontando para o arquivo de seletores que deseja corrigir e a página onde se encontra esses seletores**
 
     - O comando geral é:
 
@@ -323,10 +346,10 @@ Antes de rodar qualquer teste, é necessário subir os servidores locais dos sit
       dom-heal rodar --json "CAMINHO/DO/ARQUIVO.json" --url URL_DA_PAGINA_SITE_B
       ```
 
-    - **Exemplo prático — corrigindo seletores do arquivo `contact.json` do Selenium:**
+    - **Exemplo prático — corrigindo seletores do menu "contact" do Selenium:**
 
       ```bash
-      dom-heal rodar --json "C:\Users\Jonnas\Documents\dom-heal-poc\Selenium\elements\contact.json" --url http://localhost:8001/contact.html
+      dom-heal rodar --json "C:\Users\Seu_Usuario\Documents\dom-heal-poc\Selenium\elements\contact.json" --url http://localhost:8001/contact.html
       ```
 
     - **Observações:**
@@ -347,25 +370,3 @@ Antes de rodar qualquer teste, é necessário subir os servidores locais dos sit
 > **Dica:**  
 > Para uma avaliação mais completa da ferramenta, recomenda-se **fazer o processo de execução do DOM-Heal para cada arquivo de seletores** utilizado nos diferentes frameworks da POC (Cypress, Robot Framework e Selenium), sempre ajustando o caminho do JSON e a URL conforme a página de teste.  
 > Dessa forma, é possível analisar a capacidade de self-healing em uma maior diversidade de cenários, verificando como o DOM-Heal se comporta diante das diferentes implementações e estruturas de testes automatizados, e obtendo uma visão abrangente dos benefícios da abordagem proposta.
-
-
-
-
-## 🎥 **Tutorial em Vídeo — Execução Completa da POC**
-
-Para complementar o guia passo a passo acima, disponibilizei um **tutorial em vídeo** mostrando na prática toda a execução da POC, desde a preparação do ambiente até a validação final dos testes corrigidos pelo DOM-Heal.
-
-> **O vídeo cobre:**
-> - Clonagem do repositório e instalação dos pré-requisitos;
-> - Inicialização dos ambientes dos Sites A e B;
-> - Execução dos testes em Cypress, Robot Framework e Selenium;
-> - Simulação de falhas (migração para o Site B);
-> - Aplicação do mecanismo de self-healing (DOM-Heal);
-> - Análise dos resultados e a revalidação dos testes.     
-
-
-**Assista ao vídeo completo aqui:**   
-[Vídeo — Execução Completa da POC](https://youtu.be/hcCrL-2_MFo)
-
-> **Recomendação:**  
-> O vídeo é recomendado para todos os participantes e avaliadores para visualizar detalhes práticos da execução, tirar dúvidas pontuais e comparar com o comportamento esperado documentado no README.

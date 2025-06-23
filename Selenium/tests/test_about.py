@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 
 # Caminho para o chromedriver
-CHROMEDRIVER_PATH = r"C:\Users\Jonnas\Documents\dom-heal-poc\chromedriver-win64\chromedriver.exe"
+CHROMEDRIVER_PATH = r"../../chromedriver-win64/chromedriver.exe"
 URL = "http://localhost:8000/home.html"
 
 @pytest.fixture
