@@ -67,15 +67,6 @@ A POC inclui o mesmo cenário de teste implementado nos três principais framewo
 
 **Tutorial em vídeo** mostrando na prática toda a execução da POC, desde a preparação do ambiente até a validação final dos testes corrigidos pelo DOM-Heal.
 
-> **O vídeo cobre:**
-> - Clonagem do repositório e instalação dos pré-requisitos;
-> - Inicialização dos ambientes dos Sites A e B;
-> - Execução dos testes em Cypress, Robot Framework e Selenium;
-> - Simulação de falhas (migração para o Site B);
-> - Aplicação do mecanismo de self-healing (DOM-Heal);
-> - Análise dos resultados e a revalidação dos testes.     
-
-
 **Assista ao vídeo completo aqui:**   
 [Vídeo — Execução Completa da POC](https://youtu.be/hcCrL-2_MFo)
 
@@ -98,7 +89,7 @@ Ou [baixe o ZIP aqui](https://github.com/jonnaschristian/dom-heal-poc/archive/re
 
 
 ### 2. **Pré-requisitos**
-
+**Obs.:** Você pode executar os passos referentes a somente um dos três frameworks, caso queira analisar a biblioteca sobre a ótica de somente um. Porém, para uma avaliação de biblioteca independente, é indicado analisar com os três.
 - **Python 3.13.0 ou superior**  
   - Faça o download em:  
     [Download Python](https://www.python.org/downloads/)
@@ -251,7 +242,7 @@ Antes de rodar qualquer teste, é necessário subir os servidores locais dos sit
 
    1. Execute todos os testes Robot Framework:
 
-         Em **RobotFramework/tests/**, execute:
+         Com o ambiente virtual ativo, em **RobotFramework/tests/**, execute:
          ```bash
          robot *.robot
          ```
@@ -267,7 +258,7 @@ Antes de rodar qualquer teste, é necessário subir os servidores locais dos sit
 
    1. Execute todos os testes Selenium:
 
-         Em **Selenium/tests/**, execute:
+         Com o ambiente virtual ativo, em **Selenium/tests/**, execute:
          ```bash
          pytest
          ```
@@ -353,9 +344,9 @@ Antes de rodar qualquer teste, é necessário subir os servidores locais dos sit
       ```
 
     - **Observações:**
-      - O parâmetro `--json` deve apontar para o caminho exato do arquivo de seletores utilizado pelo framework.
+      - O parâmetro `--json` deve apontar para o caminho exato do arquivo de seletores utilizado pelo framework. Use "Copy PATH" com o botão direito do mouse sobre o arquivo.
       - O parâmetro `--url` deve ser a URL da página do Site B referente ao teste (por exemplo, `http://localhost:8001/contact.html`).
-      - O comando pode ser rodado em qualquer diretório, desde que o caminho passado nos parâmetros esteja correto.
+      - O comando pode ser rodado em qualquer diretório, desde que o caminho passado nos parâmetros esteja relativo ao diretório que se está. Em caso de dúvidas, rode na raiz do projeto.
 
 3. **Verifique o resultado**
     - O arquivo JSON escolhido será automaticamente atualizado com os novos seletores sugeridos.
@@ -364,7 +355,7 @@ Antes de rodar qualquer teste, é necessário subir os servidores locais dos sit
     - Você pode (e deve) executar todos os arquivos de seletores** utilizados nos diferentes frameworks da POC
 
 4. **Rode novamente os testes automatizados**
-    - Após a correção de elementos, execute os testes referentes aos que foram feitos o self-healing.
+    - Após a correção de elementos, execute o self-healing para todas as páginas (arquivos JSON) para ao rodar novamente os testes, passarem.
     - É esperado que, agora, os testes passem normalmente, comprovando a eficácia do mecanismo de self-healing.
 
 > **Dica:**  
